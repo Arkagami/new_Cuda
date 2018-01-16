@@ -67,7 +67,7 @@ int main()
 		cudaMemcpy(devMatrixInput, matrixInput, size, cudaMemcpyHostToDevice);
 
 		dim3 dimBlock(BLOCK_DIM, BLOCK_DIM, 1);
-		dim3 dimGrid((width + dimBlock.x - 1) / dimBlock.x, (length + dimBlock.y - 1) / dimBlock.y, 1);
+		dim3 dimGrid((length + dimBlock.x - 1) / dimBlock.x, (width + dimBlock.y - 1) / dimBlock.y, 1);
 
 		transposition<<<dimGrid, dimBlock>>>(devMatrixInput, devOutputMatrix, length, width);
 
